@@ -1,9 +1,17 @@
 // ignore_for_file: prefer_const_constructors
 
+// import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:my_app/Utils/routes.dart';
 
-class Login_page extends StatelessWidget {
+class Login_page extends StatefulWidget {
+  @override
+  State<Login_page> createState() => _Login_pageState();
+}
+
+class _Login_pageState extends State<Login_page> {
+  String name = "";
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -16,7 +24,7 @@ class Login_page extends StatelessWidget {
                 fit: BoxFit.cover,
                 // height: 500,
               ),
-              Text("WELCOME",
+              Text("WELCOME $name",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -32,6 +40,10 @@ class Login_page extends StatelessWidget {
                     TextFormField(
                       decoration: InputDecoration(
                           hintText: "Enter Username", labelText: "Username"),
+                      onChanged: (value) {
+                        name = value;
+                        setState(() {});
+                      },
                     ),
                     TextFormField(
                         obscureText: true,
